@@ -1,20 +1,20 @@
-%% »ùÓÚºË·¶ÊıµÄÏ¡ÊèÖØ¹¹Ëã·¨£¬¶şÎ¬·ÂÕæ
+%% åŸºäºæ ¸èŒƒæ•°çš„ç¨€ç–é‡æ„ç®—æ³•ï¼ŒäºŒç»´
 clc;
 clear all;
 close all;
-%% »ù±¾²ÎÊıÉèÖÃ
-c=3e8;%¹âËÙ
-f0=26.5e9;%³õÊ¼ÆµÂÊ
-fcutoff=40e9;%½ØÖ¹ÆµÂÊ
-B=fcutoff-f0;%´ø¿í
-fc=(f0+fcutoff)/2;%ÖĞĞÄÆµµã
-lambda=c/fc;%²¨³¤
-TRZ=0.3;%Ä¿±êÆ½ÃæÓë¹Û²âÆ½ÃæÖ®¼äµÄ¾àÀë
-%% ºÏ³É¿×¾¶ÉèÖÃ
-D=0.3;%ºÏ³É¿×¾¶³¤¶È
-% cofx=1;%·½Î»Î¬Ç·²ÉÑù±¶Êı
-% deltaX=lambda/2*cofx;%·½Î»Î¬²ÉÑù¼ä¸ô£¬´ÖÂÔÉèÖÃÎª°ë²¨³¤
-% Nx=floor(D/deltaX);%È·¶¨×Ü¹²µÄ²ÉÑùÎ»ÖÃ
+%% åŸºæœ¬å‚æ•°è®¾ç½®
+c=3e8;%å…‰é€Ÿ
+f0=26.5e9;%åˆå§‹é¢‘ç‡
+fcutoff=40e9;%æˆªæ­¢é¢‘ç‡
+B=fcutoff-f0;%å¸¦å®½
+fc=(f0+fcutoff)/2;%ä¸­å¿ƒé¢‘ç‚¹
+lambda=c/fc;%æ³¢é•¿
+TRZ=0.3;%ç›®æ ‡å¹³é¢ä¸è§‚æµ‹å¹³é¢ä¹‹é—´çš„è·ç¦»
+%% åˆæˆå­”å¾„è®¾ç½®
+D=0.3;%åˆæˆå­”å¾„é•¿åº¦
+% cofx=1;%æ–¹ä½ç»´æ¬ é‡‡æ ·å€æ•°
+% deltaX=lambda/2*cofx;%æ–¹ä½ç»´é‡‡æ ·é—´éš”ï¼Œç²—ç•¥è®¾ç½®ä¸ºåŠæ³¢é•¿
+% Nx=floor(D/deltaX);%ç¡®å®šæ€»å…±çš„é‡‡æ ·ä½ç½®
 % if mod(Nx,2)==0
 %     Nx=Nx;
 % else
@@ -22,24 +22,24 @@ D=0.3;%ºÏ³É¿×¾¶³¤¶È
 % end
 Nx=67;
 deltaX=(D/Nx);
-TRX_pos=(-D/2)+(0:Nx-1)*deltaX;%È·¶¨·½Î»Î¬²ÉÑùÎ»ÖÃ
-%% É¨ÆµÉèÖÃ
-Nf=40;%ÉèÉ¨ÆµÆµµã¸öÊıÎª80,Âú×ã¾àÀëÎ¬ÄÎ¿üË¹ÌØ²ÉÑù¶¨Àí
-deltaF=B/Nf;%Ã¿¸öÆµµãÖ®¼äµÄ¾àÀë
-f=f0+(0:Nf-1)*deltaF;%É¨ÆµÆµµã
-%% ½«ÌìÏß·½Ïò½ÇÓëºÏ³É¿×¾¶·øÉä½Ç¶È½øĞĞ±È½Ï
-thetaX_annt=30*pi/180;%ÌìÏß·½Ïò½Ç
-thetaX_span=2*asin(D/sqrt(TRZ^2+D^2));%Ä¿±ê·½Î»Ïò¾àÀëºÍÌ½²âÆ÷·½Î»ÏòÈ·¶¨µÄÕ¹¿ª½Ç¶È
-thetaX=min(thetaX_annt,thetaX_span);%È·¶¨²¨ÊıÓòÕ¹¿ª½Ç¶È
-%% ·Ö±æÂÊ·ÖÎö
-rhox=c*sqrt(TRZ^2+(D/2)^2)/(2*f0*D/2);%·½Î»Î¬·Ö±æÂÊ
-rhoz=c/2/B;%¾àÀëÎ¬·Ö±æÂÊ
-%% Ä¿±êµã²ÎÊıÉèÖÃ
+TRX_pos=(-D/2)+(0:Nx-1)*deltaX;%ç¡®å®šæ–¹ä½ç»´é‡‡æ ·ä½ç½®
+%% æ‰«é¢‘è®¾ç½®
+Nf=40;%è®¾æ‰«é¢‘é¢‘ç‚¹ä¸ªæ•°ä¸º80,æ»¡è¶³è·ç¦»ç»´å¥ˆå¥æ–¯ç‰¹é‡‡æ ·å®šç†
+deltaF=B/Nf;%æ¯ä¸ªé¢‘ç‚¹ä¹‹é—´çš„è·ç¦»
+f=f0+(0:Nf-1)*deltaF;%æ‰«é¢‘é¢‘ç‚¹
+%% å°†å¤©çº¿æ–¹å‘è§’ä¸åˆæˆå­”å¾„è¾å°„è§’åº¦è¿›è¡Œæ¯”è¾ƒ
+thetaX_annt=30*pi/180;%å¤©çº¿æ–¹å‘è§’
+thetaX_span=2*asin(D/sqrt(TRZ^2+D^2));%ç›®æ ‡æ–¹ä½å‘è·ç¦»å’Œæ¢æµ‹å™¨æ–¹ä½å‘ç¡®å®šçš„å±•å¼€è§’åº¦
+thetaX=min(thetaX_annt,thetaX_span);%ç¡®å®šæ³¢æ•°åŸŸå±•å¼€è§’åº¦
+%% åˆ†è¾¨ç‡åˆ†æ
+rhox=c*sqrt(TRZ^2+(D/2)^2)/(2*f0*D/2);%æ–¹ä½ç»´åˆ†è¾¨ç‡
+rhoz=c/2/B;%è·ç¦»ç»´åˆ†è¾¨ç‡
+%% ç›®æ ‡ç‚¹å‚æ•°è®¾ç½®
 Ptar=[-8,4,1;-6,0,1;-4,-4,1;
       -2,0,1;0,4,1;2,0,1;
       4,-4,1;6,0,1;8,4,1]*diag([rhox rhoz 1]);
-Ntar=length(Ptar(:,1));%¼ÆËãÄ¿±êµãµÄ¸öÊı
-%% »Ø²¨ĞÅºÅ¹¹½¨
+Ntar=length(Ptar(:,1));%è®¡ç®—ç›®æ ‡ç‚¹çš„ä¸ªæ•°
+%% å›æ³¢ä¿¡å·æ„å»º
 ECHO=zeros(Nx,Nf);
 j=sqrt(-1);
 for index_X=1:Nx
@@ -57,26 +57,26 @@ end
 % imagesc(real(ECHO));
 % figure,
 % surf(real(ECHO));
-%% È·¶¨²¨ÊıÓòÆµÂÊ
-K=2*pi*f/c;%²¨ÊıÓòÆµÂÊ
+%% ç¡®å®šæ³¢æ•°åŸŸé¢‘ç‡
+K=2*pi*f/c;%æ³¢æ•°åŸŸé¢‘ç‡
 Kx=zeros(Nx,Nf);
 Kz=zeros(Nx,Nf);
 for index_f=1:Nf
     k=K(index_f);
     kxmax=k*sin(thetaX/2);
-    Kx(:,index_f)=linspace(-kxmax,kxmax,Nx);%½«·½Î»Î¬²¨ÊıÓò¾ùÔÈÆ½·Ö
-    Kz(:,index_f)=sqrt(4*k^2-Kx(:,index_f).^2);%È·¶¨¾àÀëÎ¬²¨ÊıÓòÆµÂÊ
+    Kx(:,index_f)=linspace(-kxmax,kxmax,Nx);%å°†æ–¹ä½ç»´æ³¢æ•°åŸŸå‡åŒ€å¹³åˆ†
+    Kz(:,index_f)=sqrt(4*k^2-Kx(:,index_f).^2);%ç¡®å®šè·ç¦»ç»´æ³¢æ•°åŸŸé¢‘ç‡
 end
-%% ¶Ô·½Î»Î¬½øĞĞ¸µÀïÒ¶±ä»»
+%% å¯¹æ–¹ä½ç»´è¿›è¡Œå‚…é‡Œå¶å˜æ¢
 for index_f=1:Nf
     echo=ECHO(:,index_f);
     kx=Kx(:,index_f);
     s_ftx(:,index_f)=exp(-j*kx*TRX_pos)*echo;
 end
-%% ½øĞĞÏàÎ»²¹³¥´¦Àí
+%% è¿›è¡Œç›¸ä½è¡¥å¿å¤„ç†
 Phasecomp=Kz*TRZ;
 s_comp_FT=s_ftx.*exp(j*Phasecomp);
-%% Ä¿±êÆ½Ãæ»æÖÆ
+%% ç›®æ ‡å¹³é¢ç»˜åˆ¶
 % cofgrid=1;
 % xgrid=(-Nx/2:Nx/2)*rhox*cofgrid;
 % zgrid=(-Nf/2:Nf/2)*rhoz*cofgrid;
@@ -84,11 +84,11 @@ Lx=0.5;
 Lz=0.3;
 xgrid=linspace(-Lx/2,Lx/2,Nx);
 zgrid=linspace(-Lz/2,Lz/2,Nf);
-%% ½øĞĞ¸µÀïÒ¶Äæ±ä»»
+%% è¿›è¡Œå‚…é‡Œå¶é€†å˜æ¢
 % [M_comp,N_comp]=size(s_comp_FT);
-% nn=2;%¶ş½×
+% nn=2;%äºŒé˜¶
 % d0=60;
-% m_comp=fix(M_comp/2);     %Ò»°ëÎ»ÖÃÈ¡Õû
+% m_comp=fix(M_comp/2);     %ä¸€åŠä½ç½®å–æ•´
 % n_comp=fix(N_comp/2);
 % for index_M=1:M_comp
 %     for index_N=1:N_comp
@@ -119,4 +119,4 @@ plot(Ptar(:,1)*100,Ptar(:,2)*100,'ro','MarkerSize',8,'LineWidth',1.5);
 xlabel('Azimuth(cm)','Fontname','Times New Roman','FontSize',14);
 ylabel('Range(cm)','Fontname','Times New Roman','FontSize',14);
 set(gca, 'YDir', 'normal');
-save('D:\yyy\ºË·¶Êı³ÉÏñ\Êµ²¿Ğé²¿·ÂÕæ1\s_comp_FT.mat','s_comp_FT');
+save('D:\yyy\æ ¸èŒƒæ•°æˆåƒ\å®éƒ¨è™šéƒ¨ä»¿çœŸ1\s_comp_FT.mat','s_comp_FT');
